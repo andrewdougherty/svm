@@ -107,7 +107,7 @@ module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM
       -- implementation uses a conjugate gradient algorithm to solve for the optimal solution to the
       -- problem.
       solve svm (DataSet points values) epsilon maxIter = SVMSolution alpha points b
-		where b = (mDot nu values) / (foldl' (+) 0 $ elems nu)
+		where b = (foldl' (+) 0 $ elems v) / (foldl' (+) 0 $ elems nu)
 		      alpha = mZipWith (\x y -> x - b*y) v nu
 		      nu = cga startx ones ones kernel epsilon maxIter
 		      v = cga startx values values kernel epsilon maxIter
