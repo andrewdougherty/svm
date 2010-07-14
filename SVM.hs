@@ -107,7 +107,7 @@ module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM
       -- implementation uses a conjugate gradient algorithm to solve for the optimal solution to the
       -- problem.
       solve svm (DataSet points values) epsilon maxIter = SVMSolution alpha points b
-		where b = (foldl' (+) 0 $ elems v) / (foldl' (+) 0 $ elems nu)
+		where b = (mSum v) / (mSum nu)
 		      alpha = mZipWith (\x y -> x - b*y) v nu
 		      nu = cga startx ones ones kernel epsilon maxIter
 		      v = cga startx values values kernel epsilon maxIter
@@ -156,17 +156,22 @@ module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM
                                                 | (j < d) = cpsdot (acc + k!n * v!j) (j+1) (n+j)
                                                 | otherwise = acc + k!n * v!j
    
-   -- This funciton performs scalar multiplication of a vector.
+   -- Scalar multiplication of an unboxed array.
    scalarmult :: Double -> (UArray Int Double) -> (UArray Int Double)
    scalarmult = amap . (*)
    
-   -- This function is a version of zipWith for use with unboxed arrays.
+   -- A version of zipWith for use with unboxed arrays.
    mZipWith :: (Double -> Double -> Double) -> (UArray Int Double) -> (UArray Int Double) -> (UArray Int Double)
    mZipWith f v1 v2 = array (bounds v1) [(i, f (v1!i) (v2!i)) | i <- indices v1]
-   
-   -- This function takes the standard dot product of two unboxed arrays.
-   mDot :: (UArray Int Double) -> (UArray Int Double) -> Double
-   mDot = ((foldl' (+) 0 . elems) .) . mZipWith (*)
 
+   -- Sum the elements of an unboxed array.
+   mSum :: (UArray Int Double) -> Double
+   mSum = foldl' (+) 0 . elems
+   
+   -- Standard dot product of two unboxed arrays.
+   mDot :: (UArray Int Double) -> (UArray Int Double) -> Double
+   mDot = (mSum .) . mZipWith (*)
+
+   -- Add two unboxed arrays element by element.
    mAdd :: (UArray Int Double) -> (UArray Int Double) -> (UArray Int Double)
    mAdd = mZipWith (+)
