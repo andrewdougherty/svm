@@ -142,15 +142,6 @@ module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM
                                  next_delta = mDot next_r next_r
                                  alpha = delta / (mDot p vector)
    
-   -- This function can be used to project the cga solution onto the plane defined by |1>.  This ensures
-   -- that the sum of the dual weights vanishes.  The cga is not limited to this plane, although it
-   -- assumes it is in its solution for the bias.
-   projectSVMSolution :: SVMSolution -> SVMSolution
-   projectSVMSolution (SVMSolution alpha sv b) = SVMSolution new_alpha sv b
-            where new_alpha = listArray (a, n) [e - num | e <- elems alpha]
-                  (a, n) = bounds alpha
-                  num = (sum $ elems alpha) / (fromIntegral n)
-   
    -- The following functions are used internally for all of the linear algebra involving kernel matrices or
    -- unboxed arrays of doubles (representing vectors).
    
