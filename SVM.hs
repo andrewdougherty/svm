@@ -40,7 +40,7 @@ module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM
    -- The kernel matrix has been implemented as an unboxed array for performance reasons.
    newtype KernelMatrix = KernelMatrix (UArray Int Double)
    
-   -- Every kernel function represents an inner product in feature space. The third list is a set of parameters.
+   -- Every kernel function represents an inner product in feature space. The first list is a set of parameters.
    newtype KernelFunction = KernelFunction ([Double] -> [Double] -> [Double] -> Double)
    
    -- Some common kernel functions (these are called many times, so they need to be fast):
