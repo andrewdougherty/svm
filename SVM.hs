@@ -100,8 +100,7 @@ module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM
       -- This function takes a set of points and an SVMSolution, representing a function, and evaluates
       -- that function over all of the given points.  A list of the values y = f(x) are returned.
       simulate a (SVMSolution alpha sv b) points = [(eval p) + b | p <- elems points]
-               where eval x = mDot alpha $ kfVals x
-                     kfVals x = listArray (bounds sv) [evalKernel a x v | v <- elems sv]
+               where eval x = mDot alpha $ listArray (bounds sv) [evalKernel a x v | v <- elems sv]
       
       -- This function takes a set of points and creates an SVM solution to the problem.  The default
       -- implementation uses a conjugate gradient algorithm to solve for the optimal solution to the
