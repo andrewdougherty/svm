@@ -48,7 +48,7 @@ module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM
    -- The reciprocal kernel is the result of exponential basis functions, exp(-k*(x+a)).  The inner product
    -- is an integral over all k >= 0.
    reciprocalKernelFunction :: [Double] -> [Double] -> [Double] -> Double
-   reciprocalKernelFunction (a:as) (x:xs) (y:ys) = (1 / (x + y + 2*a)) * reciprocalKernelFunction as xs ys
+   reciprocalKernelFunction (a:as) (x:xs) (y:ys) = (reciprocalKernelFunction as xs ys) / (x + y + 2*a)
    reciprocalKernelFunction _ _ _ = 1
    
    -- This is the kernel when radial basis functions are used.
