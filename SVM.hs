@@ -57,7 +57,7 @@ module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM
             where cpshelp !accum (x:xs) (y:ys) = cpshelp (accum + (x-y)**2) xs ys
                   cpshelp !accum _ _ = negate accum
    
-   -- This is a simple dot product between the two data points, corresponding to a featurless space.
+   -- This is a simple dot product between the two data points, corresponding to a featureless space.
    linearKernelFunction :: [Double] -> [Double] -> [Double] -> Double
    linearKernelFunction (a:as) (x:xs) (y:ys) = x * y + linearKernelFunction as xs ys
    linearKernelFunction _ _ _ = 0
