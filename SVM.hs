@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -- saddle point of the dual of the Lagrangian.
 module SVM (DataSet (..), SVMSolution (..), KernelFunction (..), SVM (..), LSSVM (..), KernelMatrix (..),
             reciprocalKernelFunction, radialKernelFunction, linearKernelFunction, splineKernelFunction,
-            polyKernelFunction, mlpKernelFunction, projectSVMSolution) where
+            polyKernelFunction, mlpKernelFunction) where
    
    import Data.Array.Unboxed             -- Unboxed arrays are used for better performance.
    import Data.List (foldl')             -- foldl' gives better performance than sum
