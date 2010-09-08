@@ -1,0 +1,14 @@
+Name:           svm
+Version:        1.0.0
+Cabal-Version:  >= 1.2
+License:        GPL-3
+License-File:   LICENSE
+Author:         Andrew Dougherty
+Homepage:       http://github.com/andrewdougherty/svm
+Category:       AI
+Synopsis:       A support vector machine written in Haskell
+
+Library
+    Build-Depends:
+    Exposed-modules:
+        SVM
