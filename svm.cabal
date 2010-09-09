@@ -10,5 +10,6 @@ Synopsis:       A support vector machine written in Haskell
 
 Library
     Build-Depends:
+        base, array
     Exposed-modules:
         SVM
