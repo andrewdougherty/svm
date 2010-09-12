@@ -36,7 +36,7 @@ solution = solve svm dataSet <epsilon> <iterNum>
 
 where the variables in the angles brackets are:
 
-points  :: Array Int [Double] -- The point in the feature space.
-values  :: Array Int Double   -- The value at the corresponding point.
-epsilon :: Double             -- A cutoff value for the step size of the CGA.
-iterNum :: Int                -- The max number of iterations for the CGA.
+points  :: Array Int [Double]  -- The point in the feature space.
+values  :: UArray Int Double   -- The value at the corresponding point.
+epsilon :: Double              -- A cutoff value for the step size of the CGA.
+iterNum :: Int                 -- The max number of iterations for the CGA.
