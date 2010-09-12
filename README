@@ -4,3 +4,39 @@ svm is a library for doing least squares support vector regression.  It is
 implemented in the Haskell programming language.  The library is set up as
 a Cabal package and can be downloaded from github.com/andrewdougherty/svm.
 
+Currently the library implements:
+
+least squares support vector regression
+
+The following kernel functions are included:
+
+linear kernel function (featureless space)
+multilayer perceptron (similar to a neural net)
+polynomial kernel function (polynomial fit of the data)
+radial basis function (Gaussian basis functions)
+reciprocal kernel function (decaying exponential basis functions)
+spline kernel function
+
+For least squares support vector regression, the solution for a set of
+points is given by:
+
+|y> = K |a> + b |1>
+
+A conjugate gradient algorithm (CGA) is used to find the optimal set of
+dual weights |alpha>.
+
+USAGE:
+
+Given a set of training points {point, value} least squares support vector
+regression is done with the command:
+
+dataSet = DataSet <points> <values>
+svm = LSSVM (KernelFunction <kernelFunction>) <cost> <kernelParams>
+solution = solve svm dataSet <epsilon> <iterNum>
+
+where the variables in the angles brackets are:
+
+points  :: Array Int [Double] -- The point in the feature space.
+values  :: Array Int Double   -- The value at the corresponding point.
+epsilon :: Double             -- A cutoff value for the step size of the CGA.
+iterNum :: Int                -- The max number of iterations for the CGA.
