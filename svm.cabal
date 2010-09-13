@@ -1,6 +1,6 @@
 Name:           svm
 Version:        1.0.0
-Cabal-Version:  >= 1.2
+Cabal-Version:  >= 1.6
 License:        GPL-3
 License-File:   LICENSE
 Author:         Andrew Dougherty
@@ -11,13 +11,20 @@ Category:       AI
 Stability:      stable
 Synopsis:       A support vector machine written in Haskell
 
+Description:
+    svm is a library which implements least squares support
+    vector regression.  It includes several common kernel
+    functions.
+
+Build-Type:    Simple
+Extra-Source-Files:
+    README
+
 Library
     Build-Depends:
         base < 5, array
     Exposed-Modules:
         SVM
-    Extra-Source-Files:
-        README
 
 Source-Repository head
     type:     git
