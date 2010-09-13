@@ -14,4 +14,4 @@ Library
     Exposed-Modules:
         SVM
     Extra-Source-Files:
-        LICENSE, README
+        README
