@@ -4,8 +4,11 @@ Cabal-Version:  >= 1.2
 License:        GPL-3
 License-File:   LICENSE
 Author:         Andrew Dougherty
+Maintainer:     Andrew Dougherty
 Homepage:       http://github.com/andrewdougherty/svm
+Bug-Reports:    http://github.com/andrewdougherty/svm/issues
 Category:       AI
+Stability:      stable
 Synopsis:       A support vector machine written in Haskell
 
 Library
@@ -15,3 +18,7 @@ Library
         SVM
     Extra-Source-Files:
         README
+
+Source-Repository head
+    type:     git
+    location: git://github.com/andrewdougherty/svm.git
