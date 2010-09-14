@@ -23,7 +23,7 @@ points is given by:
 |y> = K |a> + b |1>
 
 A conjugate gradient algorithm (CGA) is used to find the optimal set of
-dual weights |alpha>.
+dual weights |a>.
 
 USAGE:
 
