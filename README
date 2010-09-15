@@ -2,7 +2,8 @@ INTRODUCTION:
 
 svm is a library for doing least squares support vector regression.  It is
 implemented in the Haskell programming language.  The library is set up as
-a Cabal package and can be downloaded from github.com/andrewdougherty/svm.
+a Cabal package and can be downloaded from github.com/andrewdougherty/svm
+or hackage.haskell.org/package/svm.
 
 Currently the library implements:
 
